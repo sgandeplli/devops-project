@@ -1,0 +1,3 @@
+bucket-name = "ambient-segment-444313-f1"
+bucket-location = "us-central1"
+bucket-storage-class = "STANDARD"
