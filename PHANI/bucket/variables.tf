@@ -9,7 +9,7 @@ variable "region" {
 }
 
 variable "bucket_name" {
-  description = "TERRA-BUCKET-1"
+  description = "terra-bucket-1-phani"
   type        = string
 }
 
