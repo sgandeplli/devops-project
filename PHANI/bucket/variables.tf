@@ -1,16 +1,26 @@
-variable "project" {
-  description = "saitejaameda"
+variable "project_id" {
+  description = "The ID of the GCP project"
   type        = string
 }
 
 variable "region" {
-  description = "US"
+  description = "The region to create the bucket in"
   type        = string
 }
 
 variable "bucket_name" {
-  description = "terra-bucket-1-phani"
+  description = "The name of the GCS bucket"
   type        = string
 }
 
+variable "bucket_location" {
+  description = "The location of the GCS bucket"
+  type        = string
+  default     = "US"
+}
 
+variable "storage_class" {
+  description = "The storage class of the GCS bucket"
+  type        = string
+  default     = "STANDARD"
+}
