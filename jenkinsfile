@@ -6,24 +6,61 @@ pipeline {
     }
 
     stages {
-        stage('connecting git') {
+        stage('Clone Repository') {
             steps {
-                git url: "https://github.com/sgandeplli/devops-project.git", branch: "feature"
+                script {
+                    echo "Cloning Git Repository..."
+                    git url: "https://github.com/sgandeplli/devops-project.git", branch: "feature"
+                }
             }
         }
         
-        stage('Terraform Init & Apply') {
+        stage('Terraform Initialization') {
             steps {
-                withCredentials([file(credentialsId: 'gcp-sa', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
-                    // Specify the subfolder where the Terraform configuration is located
-                    dir('PHANI/bucket') {
-                        // Run Terraform commands in the specified subfolder
-                        sh 'terraform init'
-                        sh 'terraform plan'
-                        sh 'terraform apply -auto-approve'
+                script {
+                    echo "Initializing Terraform..."
+                    withCredentials([file(credentialsId: 'gcp-sa', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                        dir('PHANI/bucket') {
+                            sh 'terraform init'
+                        }
                     }
                 }
             }
+        }
+
+        stage('Terraform Plan') {
+            steps {
+                script {
+                    echo "Running Terraform Plan..."
+                    withCredentials([file(credentialsId: 'gcp-sa', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                        dir('PHANI/bucket') {
+                            sh 'terraform plan'
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Terraform Apply') {
+            steps {
+                script {
+                    echo "Applying Terraform Changes..."
+                    withCredentials([file(credentialsId: 'gcp-sa', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                        dir('PHANI/bucket') {
+                            sh 'terraform apply -auto-approve'
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipeline executed successfully!"
+        }
+        failure {
+            echo "Pipeline execution failed!"
         }
     }
 }
