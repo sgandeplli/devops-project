@@ -17,9 +17,9 @@ pipeline {
                 withCredentials([file(credentialsId: 'gcp-sa', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
                     dir('specific-folder') {
                         // Run Terraform commands in the specified folder
-                        sh 'terraform init -chdir=specific-folder'
-                        sh 'terraform plan'
-                        sh 'terraform apply -auto-approve'
+                        sh 'terraform init -chdir=/PHANI/bucket'
+                        sh 'terraform plan -chdir=/PHANI/bucket'
+                        sh 'terraform apply -auto-approve -chdir=/PHANI/bucket'
                     }
                 }
             }
