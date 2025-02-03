@@ -1,6 +1,7 @@
 variable "project_id" {
   description = "saitejaameda"
   type        = string
+  default = "saitejaameda"
 }
 
 variable "region" {
@@ -12,6 +13,7 @@ variable "region" {
 variable "bucket_name" {
   description = "terra-bucket-phani-1"
   type        = string
+  default = "terra-bucket-phani-1"
 }
 
 variable "bucket_location" {
