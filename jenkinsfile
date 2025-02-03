@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    
+    environment {
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('gcp-sa')
+    }
+
+    stages {
+        stage('connecting git') {
+            steps {
+                git url: "https://github.com/sgandeplli/devops-project.git", branch: "feature"
+            }
+        }
+        
+        stage('Terraform Init & Apply') {
+            steps {
+                withCredentials([file(credentialsId: 'gcp-sa', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                    // Specify the subfolder where the Terraform configuration is located
+                    dir('PHANI/bucket') {
+                        // Run Terraform commands in the specified subfolder
+                        sh 'terraform init'
+                        sh 'terraform plan'
+                        sh 'terraform apply -auto-approve'
+                    }
+                }
+            }
+        }
+    }
+}
