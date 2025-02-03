@@ -14,6 +14,6 @@ variable "bucket_name" {
 }
 
 variable "bucket_location" {
-  description = "The location of the storage bucket"
+  description = "US"
   type        = string
 }
