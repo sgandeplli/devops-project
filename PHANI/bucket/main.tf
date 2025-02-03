@@ -1,12 +1,10 @@
-resource "google_storage_bucket" "my_bucket" {
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+
+resource "google_storage_bucket" "bucket" {
   name     = var.bucket_name
   location = var.bucket_location
-
-  versioning {
-    enabled = true
-  }
-
-  lifecycle {
-    prevent_destroy = true
-  }
+  storage_class = var.storage_class
 }
