@@ -1,5 +1,5 @@
 variable "project_id" {
-  description = "The ID of the GCP project"
+  description = "saitejaameda"
   type        = string
 }
 
@@ -9,7 +9,7 @@ variable "region" {
 }
 
 variable "bucket_name" {
-  description = "The name of the GCS bucket"
+  description = "terra-bucket-phani-1"
   type        = string
 }
 
