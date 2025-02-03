@@ -1,8 +1,12 @@
-module "storage_bucket" {
-  source = "./modules/storage_bucket"
+resource "google_storage_bucket" "my_bucket" {
+  name     = var.bucket_name
+  location = var.bucket_location
 
-  project = "saitejaameda"
-  region  = "us-central1"
-  bucket_name = "terrabucket1_jenkins"
-  bucket_location = "US"
+  versioning {
+    enabled = true
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
