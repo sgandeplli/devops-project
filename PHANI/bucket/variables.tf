@@ -4,7 +4,7 @@ variable "project" {
 }
 
 variable "region" {
-  description = "The region in which to create resource"
+  description = "US"
   type        = string
 }
 
@@ -13,7 +13,4 @@ variable "bucket_name" {
   type        = string
 }
 
-variable "bucket_location" {
-  description = "US"
-  type        = string
-}
+
