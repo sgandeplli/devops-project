@@ -6,7 +6,7 @@ pipeline {
   stages {
      stage('Connecting to Git') {
         steps {
-          git branch: 'feature/PHANI/', url: 'https://github.com/sgandeplli/devops-project.git'
+          git branch: 'feature/PHANI', url: 'https://github.com/sgandeplli/devops-project.git', changelog: false, poll: false
         }
      }
 
