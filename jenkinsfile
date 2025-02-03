@@ -15,8 +15,9 @@ pipeline {
         stage('Terraform Init & Apply') {
             steps {
                 withCredentials([file(credentialsId: 'gcp-sa', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
-                    dir('specific-folder') {
-                        // Run Terraform commands in the specified folder
+                    // Specify the subfolder where the Terraform configuration is located
+                    dir('PHANI/bucket') {
+                        // Run Terraform commands in the specified subfolder
                         sh 'terraform init'
                         sh 'terraform plan'
                         sh 'terraform apply -auto-approve'
