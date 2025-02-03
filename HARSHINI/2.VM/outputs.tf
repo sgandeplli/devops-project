@@ -1,8 +1,8 @@
 output "vm-name" {
-    value = var.vm-name
+    value = google_compute_instance.tf-vm.name
 }
 output "machine-type" {
-    value = var.machine-type
+    value = google_compute_instance.tf-vm.machine_type
 }
 output "zone" {
     value = var.zone

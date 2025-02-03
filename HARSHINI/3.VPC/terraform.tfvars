@@ -1,0 +1,5 @@
+project = "ambient-segment-444313-f1"
+vpc-name = "custom-vpc"
+subnet_name = "subnet-1"
+ip_cidr_range = "10.0.0.0/24"
+region = "us-central1"
