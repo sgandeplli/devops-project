@@ -1,15 +1,15 @@
 variable "project" {
-  description = "The GCP project ID"
+  description = "saitejaameda"
   type        = string
 }
 
 variable "region" {
-  description = "The region in which to create resources"
+  description = "The region in which to create resource"
   type        = string
 }
 
 variable "bucket_name" {
-  description = "The name of the storage bucket"
+  description = "TERRA-BUCKET-1"
   type        = string
 }
 
