@@ -13,7 +13,7 @@ variable "region" {
 variable "bucket_name" {
   description = "terra-bucket-phani-1"
   type        = string
-  default = "terra-bucket-phani-1"
+  default = "terra-bucket-phani-2"
 }
 
 variable "bucket_location" {
