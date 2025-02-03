@@ -1,10 +1,19 @@
-output "bucket_name" {
-  description = "The name of the created GCS bucket"
-  value       = google_storage_bucket.example_bucket.name
+variable "project" {
+  description = "The GCP project ID"
+  type        = string
 }
 
-output "bucket_url" {
-  description = "The URL of the created GCS bucket"
-  value       = "https://console.cloud.google.com/storage/browser/${google_storage_bucket.example_bucket.name}"
+variable "region" {
+  description = "The region in which to create resources"
+  type        = string
 }
 
+variable "bucket_name" {
+  description = "The name of the storage bucket"
+  type        = string
+}
+
+variable "bucket_location" {
+  description = "The location of the storage bucket"
+  type        = string
+}
